@@ -29,7 +29,11 @@ async function subirImagenAImgBB(archivo) {
   return resultado.data.url;
 }
 
-function NewProductContainer() {
+function formatearPrecio(precio) {
+  return `$${Number(precio).toLocaleString("es-AR")}`;
+}
+
+function NewProductContainer({ onProductoCreado }) {
   const [productoSubido, setProductoSubido] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -50,13 +54,18 @@ function NewProductContainer() {
 
       const imagenSubida = await subirImagenAImgBB(imagen);
 
-      setProductoSubido({
-        id: datosProducto.id,
+      const productoGuardado = {
+        id: Number(datosProducto.id),
         nombre: datosProducto.nombre,
-        precio: datosProducto.precio,
-        stock: datosProducto.stock,
+        precio: formatearPrecio(datosProducto.precio),
+        stock: Number(datosProducto.stock),
         imagen: imagenSubida,
-      });
+        categoria: "Producto nuevo",
+        descripcion: "Producto agregado desde el formulario de CompuMarket.",
+      };
+
+      setProductoSubido(productoGuardado);
+      onProductoCreado(productoGuardado);
     } catch (errorDeCarga) {
       setError(errorDeCarga.message);
     } finally {
@@ -81,7 +90,7 @@ function NewProductContainer() {
           <div>
             <strong>{productoSubido.nombre}</strong>
             <p>Id: {productoSubido.id}</p>
-            <p>${productoSubido.precio}</p>
+            <p>{productoSubido.precio}</p>
             <p>Stock: {productoSubido.stock}</p>
             <a
               href={productoSubido.imagen}

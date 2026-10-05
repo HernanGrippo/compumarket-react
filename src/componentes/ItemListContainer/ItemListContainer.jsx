@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import Item from "../Item/Item";
 import estilos from "./ItemListContainer.module.css";
+import { combinarProductos } from "../../utilidades/productosLocales";
 
-function ItemListContainer() {
+function ItemListContainer({ productosAgregados }) {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -28,6 +29,8 @@ function ItemListContainer() {
     cargarProductos();
   }, []);
 
+  const catalogo = combinarProductos(productos, productosAgregados);
+
   return (
     <section className="catalogo" id="productos">
       <h2>Productos destacados</h2>
@@ -37,7 +40,7 @@ function ItemListContainer() {
 
       {!cargando && !error && (
         <div className="lista-productos">
-          {productos.map((producto) => (
+          {catalogo.map((producto) => (
             <Item key={producto.id} {...producto} />
           ))}
         </div>

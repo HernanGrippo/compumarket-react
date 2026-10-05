@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import estilos from "./DetalleProducto.module.css";
+import {
+  combinarProductos,
+  obtenerProductosLocales,
+} from "../../utilidades/productosLocales";
 
 function DetalleProducto() {
   const { productoId } = useParams();
@@ -17,9 +21,13 @@ function DetalleProducto() {
           throw new Error("No se pudo cargar el catálogo");
         }
 
-        const productos = await respuesta.json();
+        const productosBase = await respuesta.json();
+        const productos = combinarProductos(
+          productosBase,
+          obtenerProductosLocales(),
+        );
         const productoEncontrado = productos.find(
-          (item) => item.id === Number(productoId),
+          (item) => String(item.id) === productoId,
         );
         setProducto(productoEncontrado ?? null);
       } catch (errorDeCarga) {
