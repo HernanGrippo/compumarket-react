@@ -1,0 +1,31 @@
+.tarjeta {
+  padding: 10px;
+  background-color: #c0c0c0;
+  border: 2px outset #ffffff;
+  text-align: center;
+}
+
+.foto {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 2px inset #ffffff;
+}
+
+.tarjeta h3 {
+  margin: 10px 0 4px;
+  font-size: 17px;
+}
+
+.puesto {
+  margin: 0 0 8px;
+  color: #000080;
+  font-weight: bold;
+}
+
+.tarjeta a {
+  color: #000000;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}

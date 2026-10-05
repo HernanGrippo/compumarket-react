@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "nombre": "Sofía Gómez",
+    "email": "sofia@compumarket.com",
+    "puesto": "CEO",
+    "foto": "/images/sofia.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Martín López",
+    "email": "martin@compumarket.com",
+    "puesto": "Desarrollador",
+    "foto": "/images/martin.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Laura Fernández",
+    "email": "laura@compumarket.com",
+    "puesto": "Diseñadora",
+    "foto": "/images/laura.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Diego Ruiz",
+    "email": "diego@compumarket.com",
+    "puesto": "Soporte técnico",
+    "foto": "/images/diego.jpg"
+  }
+]

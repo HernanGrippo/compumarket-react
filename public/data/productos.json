@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nombre": "Monitor CRT 15 pulgadas",
+    "precio": "$85.000",
+    "imagen": "/productos/monitor.jpg",
+    "categoria": "Monitores",
+    "stock": 4,
+    "descripcion": "Monitor CRT de 15 pulgadas con imagen nítida y estética retro. Ideal para equipos clásicos y espacios de trabajo con personalidad."
+  },
+  {
+    "id": 2,
+    "nombre": "Teclado clásico",
+    "precio": "$22.500",
+    "imagen": "/productos/teclado.jpg",
+    "categoria": "Periféricos",
+    "stock": 12,
+    "descripcion": "Teclado completo, resistente y cómodo para escribir durante horas. Incluye bloque numérico y conexión por cable."
+  },
+  {
+    "id": 3,
+    "nombre": "Mouse con cable",
+    "precio": "$14.000",
+    "imagen": "/productos/mouse.png",
+    "categoria": "Periféricos",
+    "stock": 20,
+    "descripcion": "Mouse preciso y fácil de usar, con conexión USB y diseño ambidiestro para acompañarte todos los días."
+  }
+]

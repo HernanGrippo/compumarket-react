@@ -1,0 +1,12 @@
+.mensaje,
+.error {
+  padding: 18px;
+  background-color: #ffffff;
+  border: 2px inset #ffffff;
+  text-align: center;
+}
+
+.error {
+  color: #ffffff;
+  background-color: #000080;
+}

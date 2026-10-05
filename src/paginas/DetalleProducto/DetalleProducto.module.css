@@ -1,0 +1,73 @@
+.detalle,
+.noEncontrado,
+.mensaje {
+  padding: 20px;
+  background-color: #ffffff;
+  border: 2px inset #ffffff;
+}
+
+.mensaje {
+  margin: 0;
+  text-align: center;
+}
+
+.volver,
+.noEncontrado a {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #000080;
+  font-weight: 700;
+}
+
+.contenido {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.contenido img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: contain;
+  background-color: #f1f1f1;
+  border: 2px inset #ffffff;
+}
+
+.contenido h1 {
+  margin: 8px 0;
+  color: #000080;
+  font-size: clamp(26px, 5vw, 38px);
+}
+
+.categoria {
+  display: inline-block;
+  padding: 4px 8px;
+  color: #ffffff;
+  background-color: #000080;
+}
+
+.precio {
+  margin: 14px 0;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.contenido button {
+  padding: 9px 16px;
+  font: inherit;
+  font-weight: 700;
+  background-color: #c0c0c0;
+  border: 2px outset #ffffff;
+  cursor: pointer;
+}
+
+.contenido button:active {
+  border-style: inset;
+}
+
+@media (max-width: 700px) {
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+}

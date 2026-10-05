@@ -1,0 +1,39 @@
+.contenedor {
+  margin-top: 24px;
+  padding: 12px;
+  background-color: #c0c0c0;
+  border: 2px outset #ffffff;
+}
+
+.contenedor h2 {
+  margin: 0 0 12px;
+  font-size: 22px;
+}
+
+.error {
+  padding: 8px;
+  color: #ffffff;
+  background-color: #000080;
+}
+
+.resultado {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  padding: 10px;
+  background-color: #ffffff;
+  border: 2px inset #ffffff;
+}
+
+.resultado img {
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
+}
+
+.resultado p {
+  margin: 6px 0;
+  color: #000080;
+  font-weight: bold;
+}
