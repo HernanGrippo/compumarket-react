@@ -4,6 +4,11 @@ E-commerce desarrollado con React y Vite. Incluye un catálogo cargado desde un
 archivo JSON local, tarjetas de producto reutilizables, formulario de alta,
 información del equipo y vistas de detalle con React Router.
 
+## Enlaces
+
+- Aplicación: https://compumarket-react.netlify.app
+- Repositorio: https://github.com/HernanGrippo/compumarket-react
+
 ## Funcionalidades
 
 - Catálogo cargado con `fetch` y `useEffect`.
