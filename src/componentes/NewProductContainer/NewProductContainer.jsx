@@ -2,37 +2,60 @@ import { useState } from "react";
 import ProductForm from "../ProductForm/ProductForm";
 import estilos from "./NewProductContainer.module.css";
 
-function leerImagen(archivo) {
-  return new Promise((resolve, reject) => {
-    const lector = new FileReader();
+async function subirImagenAImgBB(archivo) {
+  const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
 
-    lector.onload = () => resolve(lector.result);
-    lector.onerror = () => reject(new Error("No se pudo leer la imagen"));
-    lector.readAsDataURL(archivo);
-  });
+  if (!apiKey) {
+    throw new Error("Falta configurar la API key de ImgBB");
+  }
+
+  const formulario = new FormData();
+  formulario.append("image", archivo);
+
+  const respuesta = await fetch(
+    `https://api.imgbb.com/1/upload?key=${apiKey}`,
+    {
+      method: "POST",
+      body: formulario,
+    },
+  );
+
+  const resultado = await respuesta.json();
+
+  if (!respuesta.ok || !resultado.success) {
+    throw new Error(resultado.error?.message ?? "No se pudo subir la imagen");
+  }
+
+  return resultado.data.url;
 }
 
 function NewProductContainer() {
   const [productoSubido, setProductoSubido] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [imagen, setImagen] = useState(null);
+
+  function manejarCambioImagen(evento) {
+    setImagen(evento.target.files[0] ?? null);
+  }
 
   async function handleFormSubmit(datosProducto) {
     setLoading(true);
     setError(null);
 
     try {
-      const imagenProcesada = await leerImagen(datosProducto.imagen);
+      if (!imagen) {
+        throw new Error("Seleccioná una imagen");
+      }
 
-      // Simula el tiempo que tardaría un servicio en subir la imagen.
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const imagenSubida = await subirImagenAImgBB(imagen);
 
       setProductoSubido({
         id: datosProducto.id,
         nombre: datosProducto.nombre,
         precio: datosProducto.precio,
         stock: datosProducto.stock,
-        imagen: imagenProcesada,
+        imagen: imagenSubida,
       });
     } catch (errorDeCarga) {
       setError(errorDeCarga.message);
@@ -44,7 +67,11 @@ function NewProductContainer() {
   return (
     <section className={estilos.contenedor} id="nuevo-producto">
       <h2>Nuevo producto</h2>
-      <ProductForm loading={loading} onSubmit={handleFormSubmit} />
+      <ProductForm
+        loading={loading}
+        manejarCambioImagen={manejarCambioImagen}
+        onSubmit={handleFormSubmit}
+      />
 
       {error && <p className={estilos.error}>Error: {error}</p>}
 
@@ -56,6 +83,13 @@ function NewProductContainer() {
             <p>Id: {productoSubido.id}</p>
             <p>${productoSubido.precio}</p>
             <p>Stock: {productoSubido.stock}</p>
+            <a
+              href={productoSubido.imagen}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Abrir imagen en ImgBB
+            </a>
             <small>Producto guardado correctamente.</small>
           </div>
         </div>

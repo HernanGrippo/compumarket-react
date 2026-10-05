@@ -37,3 +37,14 @@
   color: #000080;
   font-weight: bold;
 }
+
+.resultado a,
+.resultado small {
+  display: block;
+  margin-top: 6px;
+}
+
+.resultado a {
+  color: #000080;
+  font-weight: bold;
+}

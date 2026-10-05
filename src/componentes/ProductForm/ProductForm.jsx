@@ -1,16 +1,15 @@
 import { useState } from "react";
 import estilos from "./ProductForm.module.css";
 
-function ProductForm({ loading, onSubmit }) {
+function ProductForm({ loading, manejarCambioImagen, onSubmit }) {
   const [id, setId] = useState("");
   const [nombre, setNombre] = useState("");
   const [precio, setPrecio] = useState("");
   const [stock, setStock] = useState("");
-  const [imagen, setImagen] = useState(null);
 
   function handleSubmit(evento) {
     evento.preventDefault();
-    onSubmit({ id, nombre, precio, stock, imagen });
+    onSubmit({ id, nombre, precio, stock });
   }
 
   return (
@@ -67,7 +66,7 @@ function ProductForm({ loading, onSubmit }) {
         <input
           type="file"
           accept="image/*"
-          onChange={(evento) => setImagen(evento.target.files[0])}
+          onChange={manejarCambioImagen}
           disabled={loading}
           required
         />
