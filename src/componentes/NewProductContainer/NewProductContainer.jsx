@@ -28,8 +28,10 @@ function NewProductContainer() {
       await new Promise((resolve) => setTimeout(resolve, 1500));
 
       setProductoSubido({
+        id: datosProducto.id,
         nombre: datosProducto.nombre,
         precio: datosProducto.precio,
+        stock: datosProducto.stock,
         imagen: imagenProcesada,
       });
     } catch (errorDeCarga) {
@@ -51,7 +53,9 @@ function NewProductContainer() {
           <img src={productoSubido.imagen} alt={productoSubido.nombre} />
           <div>
             <strong>{productoSubido.nombre}</strong>
+            <p>Id: {productoSubido.id}</p>
             <p>${productoSubido.precio}</p>
+            <p>Stock: {productoSubido.stock}</p>
             <small>Producto guardado correctamente.</small>
           </div>
         </div>
